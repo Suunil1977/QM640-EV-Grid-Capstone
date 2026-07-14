@@ -1,0 +1,41 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+venv/
+env/
+.venv/
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Excel/Office temp/lock files
+~$*.xlsx
+~$*.docx
+~$*.pptx
+*.tmp
+
+# Environment / secrets (none expected in this repo, kept as a safeguard)
+.env
+*.pem
+*.key
+
+# Editor
+.vscode/
+.idea/
+
+# Large generated artifacts (regenerate from notebooks, do not track)
+*.pdf.bak
+/outputs/tmp/
+
+# NOTE: Data files under data/raw/ and data/panel/ are intentionally
+# NOT ignored. The rubric requires complete, open-access data in this
+# repository, so QM640_Analysis_Panel.xlsx and all raw government
+# exports must be committed, not excluded.
