@@ -1,28 +1,45 @@
 QM640-EV-Grid-Capstone/
 ├── README.md
-├── LICENSE                                 # MIT (code) + data/report licensing notes
+├── LICENSE                                         # MIT (code) + data/report licensing notes
 ├── .gitignore
 ├── data/
-│   ├── raw/                                # Verbatim government exports (as downloaded)
-│   │   ├── ICED_EV_Vehicle_Registered.xlsx
-│   │   ├── MinMaxAvg_Peak_Demand.xlsx
-│   │   ├── PIB_Chargers_Operational_02Feb2024.pdf
-│   │   └── PIB_Chargers_Installed_01Aug2025.pdf
-│   └── panel/                              # Cleaned, joined analysis panel
-│       └── QM640_Analysis_Panel.xlsx       # Sheet: Panel_State_FY (master table)
+│   ├── raw/                                        # Verbatim government exports (as downloaded)
+│   │   ├── ICED_EV_Vehicle_Registered.xlsx         # NITI Aayog ICED portal export
+│   │   ├── CEA_PeakDemand_Statewise_34sheets.xlsx  # CEA statewise peak demand (34 state sheets)
+│   │   ├── PIB_Chargers_Operational_02Feb2024.pdf  # PIB PRID 2003003 — charger snapshot Feb 2024
+│   │   └── PIB_Chargers_Installed_01Aug2025.pdf    # PIB PRID 2151390 — charger snapshot Aug 2025
+│   └── panel/                                      # Master analysis panel (single source of truth)
+│       └── QM640_Analysis_Panel_UPDATED.xlsx       # Sheet: Panel_State_FY — 252 rows x 21 cols
 ├── notebooks/
-│   ├── 01_data_cleaning_join.ipynb
-│   ├── 02_RQ1_regression.ipynb
-│   ├── 03_RQ2_ttest_anova.ipynb
-│   ├── 04_RQ3_lagged_panel.ipynb
-│   └── 05_RQ4_logistic_classification.ipynb
-├── src/
-│   └── data_utils.py                       # Shared cleaning / join functions
+│   ├── 01_data_cleaning_join.ipynb                 # Data cleaning and structural verification
+│   ├── 02_eda.ipynb                                # Exploratory data analysis
+│   ├── 03_RQ1_regression.ipynb                     # RQ1: Multiple linear regression + Ridge
+│   ├── 04_RQ2_ttest_anova.ipynb                    # RQ2: Welch t-test + ANOVA + Spearman
+│   ├── 05_RQ3_lagged_panel.ipynb                   # RQ3: Lagged panel regression + two-way FE
+│   └── 06_RQ4_logistic_classification.ipynb        # RQ4: Logistic regression + ML benchmark
 ├── reports/
-│   └── QM640_Synopsis_Blueprint.docx
+│   ├── QM640_Synopsis_Suunil_Dabral.docx           # Submitted synopsis (v1.1 — folder tree updated)
+│   └── QM640_Interim_Report_Suunil_Dabral.docx     # Interim report (in progress)
 ├── images/
-│   └── screenshots/                        # df.head(), df.info(), df.describe(), missing-value plots
+│   └── screenshots/                                # Genuine Colab executed outputs
+│       ├── nb01_shape_check.png                    # df.shape confirmation (252, 21)
+│       ├── nb01_null_audit.png                     # Null counts per column
+│       ├── nb01_dtype_correction.png               # float64 -> Int64 corrections
+│       ├── nb01_subset_sizes.png                   # RQ subset N confirmations
+│       ├── nb02_descriptive_stats.png              # EDA descriptive statistics table
+│       ├── nb02_distributions.png                  # Histograms — 4 key variables
+│       ├── nb02_correlation_heatmap.png            # Pearson correlation matrix
+│       ├── nb02_null_heatmap.png                   # Structural gap heatmap
+│       ├── nb03_ols_coefficients.png               # RQ1 OLS coefficient table
+│       ├── nb03_residual_plots.png                 # RQ1 residual diagnostics
+│       ├── nb03_ridge_path.png                     # RQ1 Ridge coefficient path
+│       ├── nb04_ttest_results.png                  # RQ2 Welch t-test output
+│       ├── nb04_anova_results.png                  # RQ2 ANOVA 3-tier output
+│       ├── nb05_lag_regression.png                 # RQ3 lagged panel coefficients
+│       ├── nb05_twoway_fe.png                      # RQ3 two-way FE comparison
+│       ├── nb06_logistic_results.png               # RQ4 logistic regression output
+│       └── nb06_ml_benchmark.png                   # RQ4 ML benchmark table
 └── docs/
-    ├── source_registry.md                  # URL, publisher, as-on date, extraction date per source
-    ├── data_dictionary.md
-    └── folder_tree.txt
+    ├── QM640_EV_Data_Source_Registry.md            # URL, publisher, as-on date per source
+    ├── data_dictionary.md                          # All 21 column definitions
+    └── folder_tree.txt                             # This file
