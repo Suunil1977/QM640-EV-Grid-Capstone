@@ -178,7 +178,7 @@ All notebooks are designed for **Google Colab**.
 
 ## Citation
 
-Dabral, S. (2026). *Modelling the relationship between electric vehicle adoption, public charging infrastructure, and electricity-grid stress across Indian states* [Capstone project]. Walsh College, QM640: Data Analytics Capstone.
+Dabral, S. (2026). *Modelling the relationship between electric vehicle adoption, public charging infrastructure, and electricity-grid stress across Indian states.*
 
 ---
 
